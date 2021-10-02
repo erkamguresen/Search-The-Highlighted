@@ -10,7 +10,7 @@
       rel="stylesheet"
     />
 
-    <title>Youtube Ads Skipper</title>
+    <title>Search Online</title>
   </head>
   <body>
     <header id="main-header" class="bg-danger text-white p-5 mb-5">
@@ -18,7 +18,7 @@
         <div class="row">
           <div class="col-ms-1"></div>
           <div class="col-ms-6 mx-auto text-center">
-            <h1 id="header-title">Youtube Ads Skipper</h1>
+            <h1 id="header-title">Custom Online Search Bookmarklet</h1>
           </div>
         </div>
       </div>
@@ -27,7 +27,7 @@
       <div class="container">
         <div class="card my-3">
           <div class="card-header">
-            <h4>A bookmarklet to skip ads from Youtube</h4>
+            <h4>A custom bookmarklet to search wikipedia, google or youtube</h4>
           </div>
           <!-- <a href="${project.items[0].homepage}" class="card-link">
             <img
@@ -57,66 +57,24 @@
             </p>
           </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item text-center my-3">
+            <li
+              class="list-group-item text-center my-3"
+              id="bookmarklet-container"
+            >
               ---->
               <a
-                href="javascript: function skipAds() {
-                const video = document.querySelector('video');
-              
-                const skipAdsButton = document.querySelector('.ytp-ad-skip-button');
-                const smallAdsButton = document.querySelector('.ytp-ad-overlay-close-button');
-                const noSkipAdsButton = document.querySelector('.ytp-ad-preview-text');
-              
-                if (skipAdsButton) {
-                  video.playbackRate = video.playbackRate != 1 ? 1 : 10;
-              
-                  setTimeout(() => {
-                    console.log('add skipped');
-                  }, 500);
-              
-                  skipAdsButton.click();
-                } else if (smallAdsButton) {
-                  smallAdsButton.click();
-                  console.log('small popup add skipped');
-                } else if (noSkipAdsButton) {
-                  video.playbackRate = video.playbackRate != 1 ? 1 : 10;
-                  console.log('add played fast');
-                }
-              }
-              
-              (function () {
-                console.log('Youtube ads skipper is loaded');
-              
-                document.onkeyup = function (event) {
-                  const video = document.querySelector('video');
-                  let e = event || window.event;
-              
-                  if (e.ctrlKey) {
-                    skipAds();
-                  }
-              
-                  if (e.key === '+') {
-                    video.playbackRate += 0.25;
-                    console.log('Youtube video speed is: ' + video.playbackRate);
-                  }
-              
-                  if (e.key === '-' && video.playbackRate > 0.25) {
-                    video.playbackRate -= 0.25;
-                    console.log('Youtube video speed is: ' + video.playbackRate);
-                  }
-              
-                  if (e.key === '0' && e.ctrlKey) {
-                    video.playbackRate = 1;
-                    console.log('Youtube video speed is: ' + video.playbackRate);
-                  }
-                };
-              
-                setInterval(skipAds, 500);
-              })();
-              
+                href="javascript:(function() {
+                  function se(d) {
+                      return d.selection ? d.selection.createRange().text : d.getSelection()
+                  } 
+                  s = se(document); 
+                  for (i=0; i<frames.length && (s==null || s==''); i++) s = se(frames[i].document); 
+                  if (!s || s=='') s = prompt('Enter%20search%20terms%20for%20Wikipedia',''); 
+                  open('https://en.wikipedia.org' + (s ? '/w/index.php?title=Special:Search&search=' + encodeURIComponent(s) : '')).focus();
+                  })();
               "
               >
-                🎦 Skip Ads: Ctrl
+                🔎 Wiki Search
               </a>
               <---- (Drag to bookmarks of your browser)
             </li>
@@ -125,33 +83,83 @@
               bookmarks bar.
             </li>
             <li class="list-group-item">
-              This bookmarklet is produced only for education purposes. It works
-              as like a button in the bookmarks section. While you are in a
-              video streaming platform like YouTube, you can click the
-              bookmarklet. When you click the bookmarklet it speeds the video
-              and clicks the "skip" button for you. If you click while normal
-              video is playing (not while ads are playing) the current video
-              will play very fast. To slow down the video back to normal
-              playback speed just click the bookmarklet again or press 'CTRL' +
-              '0'.
-            </li>
-            <li class="list-group-item">
-              Each tab /window or reloads needs new click again in the bookmark.
-              But while in the same page you can just press 'Ctrl' key to skip
-              the ads.
-            </li>
-            <li class="list-group-item">
-              Use 'CTRL' + '+' key combination to increase the play speed +0.25
-              <br />
-              Use 'CTRL' + '-' key combination to decrease the play speed -0.25
-              .
-              <br />
-              Use 'CTRL' + '0' key combination to reset the play speed to 1.
+              <form action="" id="bookmarklet-form">
+                <div class="container">
+                  <div class="row align-items-center justify-content-center">
+                    <div class="col-md-3 mb-3">
+                      <label for="emoji-select">Select an emoji</label><br />
+                      <select
+                        class="custom-select"
+                        id="emoji-select"
+                        name="emoji-select"
+                      >
+                        <option value="🔎">🔎 Magnifying Glass</option>
+                        <option value="🧭">🧭 Compass</option>
+
+                        <option value="🆒">🆒 Cool</option>
+                        <option value="🆓">🆓 Free</option>
+                        <option value="ℹ️">ℹ️ Information</option>
+                        <option value="🆗">🆗 OK</option>
+                        <option value="🆘">🆘 SOS</option>
+
+                        <option value="🔭">🔭 Telescope</option>
+
+                        <option value="⁉️">⁉️ Exclamation Question</option>
+                        <option value="❓">❓ Question Mark</option>
+                        <option value="❗">❗ Exclamation Mark</option>
+                        <option value="❔">❔ Question Mark</option>
+                        <option value="❕">❕ Exclamation Mark</option>
+
+                        <option value="🎦">🎦 Cinema</option>
+                        <option value="🎬">🎬 Clapboard</option>
+                        <option value="🎥">🎥 Movie Camera</option>
+                        <option value="📽️">📽️ Film Projector</option>
+                        <option value="📺">📺 Television</option>
+                        <option value="📼">📼 Videocassette</option>
+
+                        <option value="🃏">🃏 Joker</option>
+
+                        <option value="✅">✅ Check Mark</option>
+                        <option value="☑️">☑️ Check Mark</option>
+                        <option value="🔣">🔣 Symbols</option>
+                        <option value="🔢">🔢 Numbers</option>
+
+                        <option value="🧿">🧿 Nazar Amulet</option>
+                        <option value="🎯">🎯 Darts</option>
+                      </select>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                      <label for="BookmarkletName">Name the Bookmarklet</label
+                      ><br />
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="BookmarkletName"
+                        name="BookmarkletName"
+                        placeholder="Wiki Search..."
+                      />
+                    </div>
+                    <div class="col-md-3 mb-3">
+                      <label for="search-engine">Select a search engine</label
+                      ><br />
+                      <select
+                        class="custom-select"
+                        id="search-engine"
+                        name="search-engine"
+                      >
+                        <option value="wikipedia">Wikipedia</option>
+                        <option value="youtube">YouTube</option>
+                        <option value="google">Google</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </form>
             </li>
           </ul>
           <div class="card-footer text-muted">
             Code inside the bookmarklet is as follows:<br />
-            <code>
+            <code id="bookmarklet-code">
               javascript: function skipAds() {<br />
               const video = document.querySelector('video');<br />
               <br />
@@ -214,5 +222,7 @@
         </div>
       </div>
     </main>
+
+    <script src="src/index.js" type="module"></script>
   </body>
 </html>
