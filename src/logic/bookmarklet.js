@@ -11,7 +11,7 @@ export function createTheBookmarklet(emoji, bookmarkletName, search) {
             return d.selection ? d.selection.createRange().text : d.getSelection()
         } 
         s = se(document); 
-        for (i=0; i<frames.length && (s==null || s==''); i++) s = se(frames[i].document); 
+        for (i=0; i < frames.length && (s==null || s==''); i++) s = se(frames[i].document); 
         if (!s || s=='') s = prompt('Enter search terms for ${search}',''); 
         open(${URI} + encodeURIComponent(s) : '')).focus();
         })();

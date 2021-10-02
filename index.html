@@ -160,63 +160,14 @@
           <div class="card-footer text-muted">
             Code inside the bookmarklet is as follows:<br />
             <code id="bookmarklet-code">
-              javascript: function skipAds() {<br />
-              const video = document.querySelector('video');<br />
-              <br />
-              const skipAdsButton =
-              document.querySelector('.ytp-ad-skip-button');<br />
-              const smallAdsButton =
-              document.querySelector('.ytp-ad-overlay-close-button');<br />
-              const noSkipAdsButton =
-              document.querySelector('.ytp-ad-preview-text');<br />
-              <br />
-              if (skipAdsButton) {<br />
-              video.playbackRate = video.playbackRate != 1 ? 1 : 10;<br />
-              <br />
-              setTimeout(() => {<br />
-              console.log('add skipped');<br />
-              }, 500);<br />
-              <br />
-              skipAdsButton.click();<br />
-              } else if (smallAdsButton) {<br />
-              smallAdsButton.click();<br />
-              console.log('small popup add skipped');<br />
-              } else if (noSkipAdsButton) {<br />
-              video.playbackRate = video.playbackRate != 1 ? 1 : 10;<br />
-              console.log('add played fast');<br />
-              }<br />
-              }<br />
-              <br />
-              (function () {<br />
-              console.log('Youtube ads skipper is loaded');<br />
-              <br />
-              document.onkeyup = function (event) {<br />
-              const video = document.querySelector('video');<br />
-              let e = event || window.event;<br />
-              <br />
-              if (e.ctrlKey) {<br />
-              skipAds();<br />
-              }<br />
-              <br />
-              if (e.key === '+') {<br />
-              video.playbackRate += 0.25;<br />
-              console.log('Youtube video speed is: ' + video.playbackRate);<br />
-              }<br />
-              <br />
-              if (e.key === '-' && video.playbackRate > 0.25) {<br />
-              video.playbackRate -= 0.25;<br />
-              console.log('Youtube video speed is: ' + video.playbackRate);<br />
-              }<br />
-              <br />
-              if (e.key === '0' && e.ctrlKey) {<br />
-              video.playbackRate = 1;<br />
-              console.log('Youtube video speed is: ' + video.playbackRate);<br />
-              }<br />
-              };<br />
-              <br />
-              setInterval(skipAds, 500);<br />
-              })();<br />
-              <br />
+              javascript:(function() { function se(d) { return d.selection ?
+              d.selection.createRange().text : d.getSelection() } s =
+              se(document); for (i=0; i < frames.length && (s==null || s=='');
+              i++) s = se(frames[i].document); if (!s || s=='') s =
+              prompt('Enter search terms for wikipedia','');
+              open('https://en.wikipedia.org' + (s ?
+              '/w/index.php?title=Special:Search&search=' +
+              encodeURIComponent(s) : '')).focus(); })();
             </code>
           </div>
         </div>

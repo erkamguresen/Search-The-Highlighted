@@ -25,4 +25,8 @@ export function bookmarkletFormHandler(event) {
   bookmarkletElement.appendChild(
     createTheBookmarklet(emoji, bookmarkletName, search)
   );
+
+  const aElement = bookmarkletElement.querySelector('a');
+
+  codeElement.innerText = decodeURI(aElement.href);
 }
