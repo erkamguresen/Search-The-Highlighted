@@ -162,11 +162,11 @@
             <code id="bookmarklet-code">
               javascript:(function() { function getSelectedText(page) { return
               page.selection ? page.selection.createRange().text :
-              page.getSelection() } searchText = se(document); for (i=0; i <
-              frames.length && (searchText==null || searchText==''); i++)
-              searchText = getSelectedText(frames[i].document); if (!searchText
-              || searchText=='') searchText = prompt('Enter search terms for
-              wikipedia',''); open('https://en.wikipedia.org' + (s ?
+              page.getSelection() } searchText = getSelectedText(document); for
+              (i=0; i < frames.length && (searchText==null || searchText=='');
+              i++) searchText = getSelectedText(frames[i].document); if
+              (!searchText || searchText=='') searchText = prompt('Enter search
+              terms for wikipedia',''); open('https://en.wikipedia.org' + (s ?
               '/w/index.php?title=Special:Search&search=' +
               encodeURIComponent(searchText) : '')).focus(); })();
             </code>

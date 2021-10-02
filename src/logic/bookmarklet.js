@@ -10,7 +10,7 @@ export function createTheBookmarklet(emoji, bookmarkletName, search) {
         function getSelectedText(page) {
             return page.selection ? page.selection.createRange().text : page.getSelection()
         } 
-        searchText = se(document); 
+        searchText = getSelectedText(document); 
         for (i=0; i < frames.length && (searchText==null || searchText==''); i++) searchText = getSelectedText(frames[i].document); 
         if (!searchText || searchText=='') searchText = prompt('Enter search terms for ${search}',''); 
         open(${URI} + encodeURIComponent(searchText) : '')).focus();
