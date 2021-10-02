@@ -160,14 +160,15 @@
           <div class="card-footer text-muted">
             Code inside the bookmarklet is as follows:<br />
             <code id="bookmarklet-code">
-              javascript:(function() { function se(d) { return d.selection ?
-              d.selection.createRange().text : d.getSelection() } s =
-              se(document); for (i=0; i < frames.length && (s==null || s=='');
-              i++) s = se(frames[i].document); if (!s || s=='') s =
-              prompt('Enter search terms for wikipedia','');
-              open('https://en.wikipedia.org' + (s ?
+              javascript:(function() { function getSelectedText(page) { return
+              page.selection ? page.selection.createRange().text :
+              page.getSelection() } searchText = se(document); for (i=0; i <
+              frames.length && (searchText==null || searchText==''); i++)
+              searchText = getSelectedText(frames[i].document); if (!searchText
+              || searchText=='') searchText = prompt('Enter search terms for
+              wikipedia',''); open('https://en.wikipedia.org' + (s ?
               '/w/index.php?title=Special:Search&search=' +
-              encodeURIComponent(s) : '')).focus(); })();
+              encodeURIComponent(searchText) : '')).focus(); })();
             </code>
           </div>
         </div>
