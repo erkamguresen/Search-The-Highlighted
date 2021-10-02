@@ -27,12 +27,12 @@ export function createTheBookmarklet(emoji, bookmarkletName, search) {
 function getURI(search) {
   switch (search) {
     case 'google':
-      return `'https://www.google.com'+ (s ? '/search?q='`;
+      return `'https://www.google.com'+ (searchText ? '/search?q='`;
 
     case 'youtube':
-      return `'https://www.youtube.com'+ (s ? '/results?search_query='`;
+      return `'https://www.youtube.com'+ (searchText ? '/results?search_query='`;
 
     default:
-      return `'https://en.wikipedia.org' + (s ? '/w/index.php?title=Special:Search&search='`;
+      return `'https://en.wikipedia.org' + (searchText ? '/w/index.php?title=Special:Search&search='`;
   }
 }

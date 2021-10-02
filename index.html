@@ -166,8 +166,8 @@
               (i=0; i < frames.length && (searchText==null || searchText=='');
               i++) searchText = getSelectedText(frames[i].document); if
               (!searchText || searchText=='') searchText = prompt('Enter search
-              terms for wikipedia',''); open('https://en.wikipedia.org' + (s ?
-              '/w/index.php?title=Special:Search&search=' +
+              terms for wikipedia',''); open('https://en.wikipedia.org' +
+              (searchText ? '/w/index.php?title=Special:Search&search=' +
               encodeURIComponent(searchText) : '')).focus(); })();
             </code>
           </div>
